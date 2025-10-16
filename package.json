@@ -42,5 +42,9 @@
     "karma-rollup-preprocessor": "^7.0.8",
     "mocha": "^11.0.0",
     "rollup": "^4.x"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }

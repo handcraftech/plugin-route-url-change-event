@@ -5,7 +5,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
     //    files: ['./test/*.test.js', './src/*.js'],
@@ -21,8 +21,9 @@ module.exports = function(config) {
     },
 
     rollupPreprocessor: {
+      plugins: [require('@rollup/plugin-node-resolve').nodeResolve()],
       output: {
-        name: 'url-change-event',
+        name: 'pluginRouteUrlChangeEvent',
         format: 'es'
       }
     },

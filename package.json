@@ -5,8 +5,11 @@
   "main": "dist/url-change-event.js",
   "typings": "./index.d.ts",
   "sideEffects": true,
+  "engines": {
+    "node": ">=21"
+  },
   "scripts": {
-    "lint": "prettier -l 'src/**/*.js' && eslint src",
+    "lint": "eslint src",
     "build": "rollup -c",
     "karma": "karma start",
     "test": "npm run lint && npm run karma",
@@ -26,19 +29,18 @@
   },
   "homepage": "https://github.com/handcraftech/plugin-route-url-change-event#readme",
   "devDependencies": {
-    "@babel/core": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
-    "chai": "^4.3.7",
-    "eslint": "^8.28.0",
-    "karma": "^6.4.1",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^3.1.1",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "chai": "^6.0.0",
+    "eslint": "^9.0.0",
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
     "karma-mocha": "^2.0.1",
     "karma-rollup-preprocessor": "^7.0.8",
-    "mocha": "^10.1.0",
-    "prettier": "^2.7.1",
-    "rollup": "^3.3.0",
-    "@rollup/plugin-babel": "^6.0.2",
-    "@rollup/plugin-terser": "^0.1.0"
+    "mocha": "^11.0.0",
+    "rollup": "^4.x"
   }
 }

@@ -25,7 +25,7 @@ window.addEventListener('urlchange', function(e) {
 Properties
 * ```oldURL``` {__URL__} - the url before change.
 * ```newURL``` {__URL__ | __null__} - the url after change. __WARNING:__ when event.action is __beforeunload__, this value is null.
-* ```action``` {[pushState|replaceState|popstate|beforeunload]} - the action that causes the url to change.
+* ```action``` {[pushState|replaceState|popstate|beforeunload]} - the action that causes the url to change. 
 
 Method
 * ```preventDefault``` - prevent url change

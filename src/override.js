@@ -1,7 +1,7 @@
 import UrlChangeEvent from './UrlChangeEvent'
 import { cacheURL, cacheIndex, updateCacheState } from './stateCache'
+import { originPushState, originReplaceState } from './constants'
 
-export const originPushState = window.history.pushState.bind(window.history)
 window.history.pushState = function (state, title, url) {
   const nowURL = new URL(url || '', window.location.href)
   const notCanceled = window.dispatchEvent(
@@ -18,9 +18,6 @@ window.history.pushState = function (state, title, url) {
   }
 }
 
-export const originReplaceState = window.history.replaceState.bind(
-  window.history
-)
 window.history.replaceState = function (state, title, url) {
   const nowURL = new URL(url || '', window.location.href)
   const notCanceled = window.dispatchEvent(

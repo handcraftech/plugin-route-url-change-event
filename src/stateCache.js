@@ -1,4 +1,4 @@
-import { originReplaceState } from './override'
+import { originReplaceState } from './constants'
 
 export let cacheURL
 export let cacheIndex

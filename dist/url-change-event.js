@@ -1,6 +1,6 @@
 class UrlChangeEvent extends Event {
   constructor(option = {}) {
-    super('urlchangeevent', { cancelable: true, ...option });
+    super('urlchange', { cancelable: true, ...option });
     this.newURL = option.newURL;
     this.oldURL = option.oldURL;
     this.action = option.action;
@@ -12,40 +12,7 @@ class UrlChangeEvent extends Event {
 }
 
 const originPushState = window.history.pushState.bind(window.history);
-window.history.pushState = function (state, title, url) {
-  const nowURL = new URL(url || '', window.location.href);
-  const notCanceled = window.dispatchEvent(
-    new UrlChangeEvent({
-      newURL: nowURL,
-      oldURL: cacheURL,
-      action: 'pushState',
-    })
-  );
-
-  if (notCanceled) {
-    originPushState({ _index: cacheIndex + 1, ...state }, title, url);
-    updateCacheState();
-  }
-};
-
-const originReplaceState = window.history.replaceState.bind(
-  window.history
-);
-window.history.replaceState = function (state, title, url) {
-  const nowURL = new URL(url || '', window.location.href);
-  const notCanceled = window.dispatchEvent(
-    new UrlChangeEvent({
-      newURL: nowURL,
-      oldURL: cacheURL,
-      action: 'replaceState',
-    })
-  );
-
-  if (notCanceled) {
-    originReplaceState({ _index: cacheIndex, ...state }, title, url);
-    updateCacheState();
-  }
-};
+const originReplaceState = window.history.replaceState.bind(window.history);
 
 let cacheURL;
 let cacheIndex;
@@ -64,6 +31,38 @@ function updateCacheState() {
 
 initState();
 updateCacheState();
+
+window.history.pushState = function (state, title, url) {
+  const nowURL = new URL(url || '', window.location.href);
+  const notCanceled = window.dispatchEvent(
+    new UrlChangeEvent({
+      newURL: nowURL,
+      oldURL: cacheURL,
+      action: 'pushState',
+    })
+  );
+
+  if (notCanceled) {
+    originPushState({ _index: cacheIndex + 1, ...state }, title, url);
+    updateCacheState();
+  }
+};
+
+window.history.replaceState = function (state, title, url) {
+  const nowURL = new URL(url || '', window.location.href);
+  const notCanceled = window.dispatchEvent(
+    new UrlChangeEvent({
+      newURL: nowURL,
+      oldURL: cacheURL,
+      action: 'replaceState',
+    })
+  );
+
+  if (notCanceled) {
+    originReplaceState({ _index: cacheIndex, ...state }, title, url);
+    updateCacheState();
+  }
+};
 
 window.addEventListener('popstate', function (e) {
   initState();
@@ -106,3 +105,4 @@ window.addEventListener('beforeunload', function (e) {
     return confirmationMessage
   }
 });
+//# sourceMappingURL=url-change-event.js.map

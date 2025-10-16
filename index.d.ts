@@ -9,13 +9,13 @@ export type UrlChangeEvent = Event & IOption
 declare global {
   interface Window {
     addEventListener(
-      type: 'urlchangeevent',
+      type: 'urlchange',
       callback: (event: UrlChangeEvent) => void,
       options?: boolean | AddEventListenerOptions
     ): void
 
     removeEventListener(
-      type: 'urlchangeevent',
+      type: 'urlchange',
       callback: (event: UrlChangeEvent) => void,
       options?: boolean | AddEventListenerOptions
     ): void

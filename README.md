@@ -1,14 +1,13 @@
-# url-change-event
+# URL Changel Event
 a wrapper event that listen & control URL changes
-[中文](README_CN.md)
 
 ## Installation
-you can install with ```npm install url-change-event```
+you can install with ```npm install @handcraftech/plugin-route-url-change-event```
 ```javascript
     /* in ES 5 */
-    require('url-change-event')
+    require('@handcraftech/plugin-route-url-change-event')
     /* in ES 6 */
-    import 'url-change-event'
+    import '@handcraftech/plugin-route-url-change-event'
 ```
 or
 ```html
@@ -18,7 +17,7 @@ or
 
 ## Usage
 ```javascript
-window.addEventListener('urlchangeevent', function(e) {
+window.addEventListener('urlchange', function(e) {
     // your code here
 })
 ```

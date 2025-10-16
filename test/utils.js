@@ -12,10 +12,10 @@ export function waitForUrlChange(trigger, onChange) {
       if (typeof onChange === 'function') {
         onChange(event)
       }
-      window.removeEventListener('urlchangeevent', callback)
+      window.removeEventListener('urlchange', callback)
       res()
     }
-    window.addEventListener('urlchangeevent', callback)
+    window.addEventListener('urlchange', callback)
     if (typeof trigger === 'function') {
       trigger()
     }
